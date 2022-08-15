@@ -30,7 +30,7 @@ def callback_generation(ga_instance):
 last_fitness = 0
 
 # Preparing the NumPy array of the inputs.
-data_inputs = numpy.array([[2, 5, -3, 0.1],
+data_inputs = numpy.array([[2, 5, -3, 0.4],
                            [8, 15, 20, 13]])
 
 # Preparing the NumPy array of the outputs.
