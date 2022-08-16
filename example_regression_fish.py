@@ -37,6 +37,7 @@ data_inputs = numpy.asarray(data[:, 2:], dtype=numpy.float32)
 
 # Preparing the NumPy array of the outputs.
 data_outputs = numpy.asarray(data[:, 1], dtype=numpy.float32)
+print(data_outputs)
 
 # The length of the input vector for each sample (i.e. number of neurons in the input layer).
 num_inputs = data_inputs.shape[1]
