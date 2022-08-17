@@ -34,11 +34,13 @@ last_fitness = 0
 data = numpy.array(pandas.read_csv("Data.csv"))
 
 # Preparing the NumPy array of the inputs.
-data_inputs = numpy.asarray(data[:, 2:], dtype=numpy.float32)
+# data_inputs = numpy.asarray(data[:, 2:], dtype=numpy.float32)
+data_inputs = numpy.asarray(data[1:10, 2:], dtype=numpy.float32)
 print(data_inputs)
 
 # Preparing the NumPy array of the outputs.
-data_outputs = numpy.asarray(data[:, 1], dtype=numpy.float32)
+# data_outputs = numpy.asarray(data[:, 1], dtype=numpy.float32)
+data_outputs = numpy.asarray(data[1:10, 1], dtype=numpy.float32)
 print(data_outputs)
 
 # The length of the input vector for each sample (i.e. number of neurons in the input layer).
@@ -48,9 +50,9 @@ num_inputs = data_inputs.shape[1]
 num_solutions = 6 # A solution or a network can be used interchangeably.
 GANN_instance = pygad.gann.GANN(num_solutions=num_solutions,
                                 num_neurons_input=num_inputs,
-                                num_neurons_hidden_layers=[2],
+                                num_neurons_hidden_layers=[5, 10],
                                 num_neurons_output=1,
-                                hidden_activations=["relu"],
+                                hidden_activations=["relu", "relu"],
                                 output_activation="None")
 
 # population does not hold the numerical weights of the network instead it holds a list of references to each last layer of each network (i.e. solution) in the population. A solution or a network can be used interchangeably.
@@ -64,11 +66,11 @@ initial_population = population_vectors.copy()
 
 num_parents_mating = 4 # Number of solutions to be selected as parents in the mating pool.
 
-num_generations = 500 # Number of generations.
+num_generations = 100 # Number of generations.
 
 mutation_percent_genes = 50 # Percentage of genes to mutate. This parameter has no action if the parameter mutation_num_genes exists.
 
-parent_selection_type = "sss" # Type of parent selection.
+parent_selection_type = "rws" # Type of parent selection.
 
 crossover_type = "single_point" # Type of the crossover operator.
 
